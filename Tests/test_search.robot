@@ -4,8 +4,8 @@ Documentation       This test suite contains following test cases:
 
 Library     search_page.SearchPage
 
-Resource    ../Resources/search_resource.robot
-Resource    ../Resources/search_result_resource.robot
+Resource    ../Resources/gui/search_resource.robot
+Resource    ../Resources/gui/search_result_resource.robot
 
 Suite Setup         SuiteSetup
 Suite Teardown      SuiteTeardown

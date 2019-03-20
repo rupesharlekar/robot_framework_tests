@@ -15,7 +15,7 @@ class SearchPage(Page):
         :return:
         """
         self.title_should_be("Google")
-        self.wait_until_element_is_visible("google_logo", 5)
+        # self.wait_until_element_is_visible("google_logo", 5)
         logger.info("Landed on Google Main Page")
         return self
 
