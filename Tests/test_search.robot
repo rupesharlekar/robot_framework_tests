@@ -11,9 +11,6 @@ Suite Setup         SuiteSetup
 Suite Teardown      SuiteTeardown
 
 *** Variables ***
-${browser}      firefox
-${url}          https://www.google.com/
-
 ${searchthis}   python
 
 *** Test Cases ***
