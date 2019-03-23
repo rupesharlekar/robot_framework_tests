@@ -13,6 +13,10 @@ class ChapterVerse(object):
         self.api_url = self.base_url + '/api' + Config.API_VERSION
 
     def authenticate_client(self):
+        """
+        Generates the Access Token using https://bhagavadgita.io/auth/oauth/token
+        Prepare the Authentication Header for other APIs to use
+        """
         # import pdb;pdb.set_trace()
         client_id = Config.CLIENT_ID
         client_secret = Config.CLIENT_SECRET
@@ -28,6 +32,10 @@ class ChapterVerse(object):
         return self
 
     def verify_chapters_count(self,exp_chapter_count):
+        """
+        Verify the response for API https://bhagavadgita.io/api/v1/chapters
+        :param exp_chapter_count: expected chapter count
+        """
         request_url = self.api_url + Config.CHAPTER
         headers = __builtin__.api_call_headers
 
@@ -40,6 +48,11 @@ class ChapterVerse(object):
         asserts.assert_true(int(exp_chapter_count) == len(chapters_resp), "Expected and Actual Chapter do not match")
 
     def verify_chapter_meaning(self,chapter_no, exp_name_meaning):
+        """
+        Verify the response for API https://bhagavadgita.io/api/v1/chapters/2
+        :param chapter_no: chapter number to GET
+        :param exp_name_meaning: Expected name_meaning response parameter value
+        """
         request_url = self.api_url + Config.CHAPTER + '/' + chapter_no
         headers = __builtin__.api_call_headers
 
@@ -53,6 +66,11 @@ class ChapterVerse(object):
         asserts.assert_true(act_name_meaning == exp_name_meaning, "Expected and Actual name meaning do not match")
 
     def verify_verse_count_in_chapter(self,chapter_no,verse_count):
+        """
+        Verify the response for API https://bhagavadgita.io/api/v1/chapters/2/verses
+        :param chapter_no: chapter number to GET
+        :param verse_count: Expected total number of verses in chapter number
+        """
         request_url = self.api_url + Config.CHAPTER + '/' + chapter_no + Config.VERSE
         headers = __builtin__.api_call_headers
 
@@ -66,6 +84,12 @@ class ChapterVerse(object):
         asserts.assert_true(int(verse_count) == len(verse_resp), "Expected and Actual verse count do not match")
 
     def verify_meaning_of_verse_number(self,verse_number,chapter_no,meaning):
+        """
+        Verify the response for API https://bhagavadgita.io/api/v1/chapters/2/verses/15
+        :param verse_number: verse number to GET
+        :param chapter_no: chapter number to GET
+        :param meaning: Expected meaning Prefix of the verse
+        """
         request_url = self.api_url + Config.CHAPTER + '/' + chapter_no + Config.VERSE + '/' + verse_number
         headers = __builtin__.api_call_headers
 
